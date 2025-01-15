@@ -1,0 +1,6 @@
+User Functional Requirements:
+Track total net worth, savings, and expenses.
+Categorize expenses (e.g., housing, personal, transportation).
+Plan for retirement and investments.
+Input custom loans and project repayment timelines.
+View annual and monthly summaries.
