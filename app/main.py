@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import users, expenses 
+from app.routers import users, expenses, categories, networth
 
 
 app = FastAPI()
@@ -18,6 +18,8 @@ except Exception as e:
 #Include Routers 
 app.include_router(users.router)
 app.include_router(expenses.router)
+app.include_router(networth.router)
+app.include_router(categories.router)
 
 
 @app.get('/')

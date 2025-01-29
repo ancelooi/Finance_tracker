@@ -1,5 +1,5 @@
-from typing import List 
-from pydantic import BaseModel, field_validator
+from typing import List, Dict
+from pydantic import BaseModel, field_validator, Field
 from datetime import datetime
 
 #Response Models 
@@ -59,4 +59,27 @@ class ExpenseRequest(BaseModel):
 
 class ExpenseResponse(BaseModel):
     message: str
+
+
+class CategoryItem(BaseModel):
+    type: str = Field(..., pattern="^(Liability|Spending)$", description="Type must be 'Liability' or 'Spending'")
+    subcategories: List[str] = Field(..., description="List of subcategories")
+
+class AddCategoriesRequest(BaseModel):
+    username: str
+    new_cat: Dict[str, CategoryItem]
+
+    @field_validator("new_cat")
+    @classmethod
+    def validate_new_cat(cls, value):
+        if not value:
+            raise ValueError("new_cat cannot be empty.")
+        return value
+
+
+
+class AssetRequest(BaseModel):
+    username: str 
+    name: str
+    value: float 
 
