@@ -42,3 +42,13 @@ async def get_user_categories(username: str):
     if not user_categories:
         raise HTTPException(status_code=404, detail="No categories found for this user.")
     return {"categories": user_categories["categories"]}
+
+@router.get("/common")
+async def get_common_categories():
+    COMMON_CATEGORIES = {
+        "Transport": ["Fuel", "Public Transport", "Car Maintenance"],
+        "Food": ["Groceries", "Dining Out"],
+        "Utilities": ["Electricity", "Water", "Internet"],
+        "Entertainment": ["Movies", "Concerts", "Streaming Services"]
+    }
+    return COMMON_CATEGORIES
