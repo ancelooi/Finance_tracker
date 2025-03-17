@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.routers import users, expenses, categories, networth
 from app.config import settings
-
+from app.routers import planning 
 app = FastAPI()
 
 from pymongo import MongoClient
@@ -20,6 +20,7 @@ app.include_router(users.router)
 app.include_router(expenses.router)
 app.include_router(networth.router)
 app.include_router(categories.router)
+app.include_router(planning.router)
 
 @app.get('/')
 def read_root():

@@ -11,4 +11,9 @@ expenses_collection = database.get_collection("expenses")
 categories_collection = database.get_collection("categories")
 assets_collection = database.get_collection("assets")
 
+# Add new collections
+savings_collection = database.get_collection("savings")
+investments_collection = database.get_collection("investments")
+loans_collection = database.get_collection("loans")
+
 

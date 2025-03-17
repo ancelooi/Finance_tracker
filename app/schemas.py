@@ -81,5 +81,31 @@ class AddCategoriesRequest(BaseModel):
 class AssetRequest(BaseModel):
     username: str 
     name: str
-    value: float 
+    value: float
+
+
+class SavingsRequest(BaseModel):
+    username: str
+    amount: float
+    goal: float
+    description: str
+    date: datetime
+
+class InvestmentRequest(BaseModel):
+    username: str
+    type: str = Field(..., pattern="^(Stocks|Bonds|Crypto|RealEstate|Other)$")
+    amount: float
+    expected_return: float
+    target_date: datetime
+    description: str
+
+class LoanRequest(BaseModel):
+    username: str
+    name: str
+    principal: float
+    interest_rate: float
+    start_date: datetime
+    end_date: datetime
+    payment_frequency: str = Field(..., pattern="^(Monthly|Weekly|Yearly)$")
+    payment_amount: float
 
